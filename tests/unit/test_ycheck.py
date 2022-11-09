@@ -544,6 +544,10 @@ vars:
   fromfact2: '@hotsos.core.host_helpers.filestat.FileFactory.mtime:myfile.txt'
   fromsysctl: '@hotsos.core.host_helpers.sysctl.SYSCtlFactory.somaxconn:net.core'
   boolvar: false
+  evalgroupvar: ['@hotsos.core.host_helpers.sysctl.SYSCtlFactory.udp_mem:net.ipv4', "split(' ')", "take_nth(0)", "cast_to(int)"]
+  evalgroupvar1: ['@hotsos.core.host_helpers.sysctl.SYSCtlFactory.udp_mem:net.ipv4', "split(' ')", "take_nth(1)", "cast_to(int)"]
+  evalgroupvar2: ['@hotsos.core.host_helpers.sysctl.SYSCtlFactory.udp_mem:net.ipv4', "split(' ')", "take_nth(2)", "cast_to(int)"]
+  
 checks:
   aptcheck:
     apt: nova-compute
@@ -563,6 +567,8 @@ checks:
     varops: [[$fromsysctl], [eq, '4096']]
   boolvar:
     varops: [[$boolvar], [truth], [not_]]
+  evalgroupvar:
+    varops: [[$evalgroupvar], [eq, '4096']]
 conclusions:
   aptcheck:
     decision: aptcheck
@@ -598,7 +604,7 @@ conclusions:
         varval: '@checks.isbar.requires.value'
   fromprop:
     decision:
-      or: [fromprop, boolvar, fromfact, fromfact2, fromsysctl]
+      or: [fromprop, boolvar, fromfact, fromfact2, fromsysctl, evalgroupvar]
     raises:
       type: SystemWarning
       message: fromprop! ({varname}={varval})

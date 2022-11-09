@@ -8,6 +8,35 @@ from hotsos.core.ycheck.engine.properties.common import (
 )
 
 
+class ValOps(object):
+    @staticmethod
+    def split(*args, value):
+        print("aaa")
+        print("called, value:" + value + "args:" + str(args))
+        for arg in args:
+            print("arg: " + str(arg))
+
+        return value.split(*args)
+
+    @staticmethod
+    def take_nth(*args, value):
+        pos = int(args[0])
+        print("take called " + str(pos) + "value = " + str(value))
+        return value[pos]
+
+    @staticmethod
+    def cast_to(*args, value):
+        allowed_type_casts = {
+            'int': int,
+            'float': float,
+            'str': str
+        }
+        t = allowed_type_casts[args[0]]
+        print("called")
+        print("type " + str(t) + "value: " + value)
+        return t(value)
+
+
 @add_to_property_catalog
 class YPropertyVarDef(YPropertyMappedOverrideBase):
 
@@ -31,6 +60,35 @@ class YPropertyVarDef(YPropertyMappedOverrideBase):
     def _is_import_path(self, val):
         return type(val) == str and val.startswith('@')
 
+    def _is_eval_group(self):
+        return len(self.content.keys()) > 1
+
+    def _evaluate_eval_group(self):
+        """
+        Poor man's expression evaluator.
+
+        Evaluate an evaluation group and produce a result.
+        """
+
+        # Element at first index will always be the
+        # variable value to process.
+        val = list(self.content.keys())[0]
+        if self._is_import_path(val):
+            val = self.get_property(val[1:])
+
+        for expr in list(self.content.keys())[1:]:
+            fn_name, args = expr.split('(')
+            args = args.replace(")", "")
+            args = args.replace("\'", "")
+            args = args.split(",")
+            print("fn_name: " + fn_name + ", args: " + str(args))
+            f = getattr(ValOps, fn_name)
+            print(f)
+            val = f(value=val, *args)
+            print("value= " + str(val) + " type= " + str(type(val)), " len= ")
+
+        return val
+
     @cached_yproperty_attr
     def value(self):
         """
@@ -40,7 +98,10 @@ class YPropertyVarDef(YPropertyMappedOverrideBase):
         loaded.
         """
         val = self.raw_value
-        if self._is_import_path(val):
+        print(self)
+        if self._is_eval_group():
+            val = self._evaluate_eval_group()
+        elif self._is_import_path(val):
             val = self.get_property(val[1:])
 
         return val
