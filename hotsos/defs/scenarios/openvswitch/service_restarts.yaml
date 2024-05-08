@@ -1,5 +1,5 @@
 vars:
-  ovs_version: '@hotsos.core.host_helpers.packaging.AptFactory.version:openvswitch-switch'
+  ovs_version: $[hotsos.core.host_helpers.packaging.AptFactory.version:openvswitch-switch]
 checks:
   ovs_frequent_restarts:
     input:

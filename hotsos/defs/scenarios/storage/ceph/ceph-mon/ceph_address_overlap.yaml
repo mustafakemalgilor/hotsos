@@ -1,6 +1,6 @@
 vars:
-  cluster_network: '@hotsos.core.plugins.storage.ceph.CephConfig.cluster_network_set'
-  public_network: '@hotsos.core.plugins.storage.ceph.CephConfig.public_network_set'
+  cluster_network: $[hotsos.core.plugins.storage.ceph.CephConfig.cluster_network_set]
+  public_network: $[hotsos.core.plugins.storage.ceph.CephConfig.public_network_set]
 checks:
   network_configs_overlap:
     # The following logic passes if one or both of network sets P and C

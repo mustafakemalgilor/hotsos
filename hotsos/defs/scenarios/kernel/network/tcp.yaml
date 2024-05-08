@@ -1,30 +1,30 @@
 vars:
-  incsumerr: '@hotsos.core.plugins.kernel.net.SNMPTcp.InCsumErrors'
-  incsumrate_pcent: '@hotsos.core.plugins.kernel.net.SNMPTcp.InCsumErrorsPcentInSegs'
-  outsegs: '@hotsos.core.plugins.kernel.net.SNMPTcp.OutSegs'
-  retrans: '@hotsos.core.plugins.kernel.net.SNMPTcp.RetransSegs'
-  outretrans_pcent: '@hotsos.core.plugins.kernel.net.SNMPTcp.RetransSegsPcentOutSegs'
-  spurrtx: '@hotsos.core.plugins.kernel.net.NetStatTCP.TCPSpuriousRtxHostQueues'
-  spurrtx_pcent: '@hotsos.core.plugins.kernel.net.NetStatTCP.TCPSpuriousRtxHostQueuesPcentOutSegs'
-  prunec: '@hotsos.core.plugins.kernel.net.NetStatTCP.PruneCalled'
-  rcvcoll: '@hotsos.core.plugins.kernel.net.NetStatTCP.TCPRcvCollapsed'
-  rcvpr: '@hotsos.core.plugins.kernel.net.NetStatTCP.RcvPruned'
-  ofopr: '@hotsos.core.plugins.kernel.net.NetStatTCP.OfoPruned'
-  backlogd: '@hotsos.core.plugins.kernel.net.NetStatTCP.TCPBacklogDrop'
-  rpfilterd: '@hotsos.core.plugins.kernel.net.NetStatTCP.IPReversePathFilter'
-  ldrop: '@hotsos.core.plugins.kernel.net.NetStatTCP.ListenDrops'
-  pfmemd: '@hotsos.core.plugins.kernel.net.NetStatTCP.PFMemallocDrop'
-  minttld: '@hotsos.core.plugins.kernel.net.NetStatTCP.TCPMinTTLDrop'
-  listenovf: '@hotsos.core.plugins.kernel.net.NetStatTCP.ListenOverflows'
-  ofod: '@hotsos.core.plugins.kernel.net.NetStatTCP.OfoPruned'
-  zwind: '@hotsos.core.plugins.kernel.net.NetStatTCP.TCPZeroWindowDrop'
-  rcvqd: '@hotsos.core.plugins.kernel.net.NetStatTCP.TCPRcvQDrop'
-  rcvqd_pcent: '@hotsos.core.plugins.kernel.net.NetStatTCP.TCPRcvQDropPcentInSegs'
-  rqfulld: '@hotsos.core.plugins.kernel.net.NetStatTCP.TCPReqQFullDrop'
-  rqfullcook: '@hotsos.core.plugins.kernel.net.NetStatTCP.TCPReqQFullDoCookies'
-  memusage_pages_inuse: '@hotsos.core.plugins.kernel.net.SockStat.GlobTcpSocksTotalMemPages'
-  memusage_pages_max: '@hotsos.core.plugins.kernel.net.SockStat.SysctlTcpMemMax'
-  memusage_pct: '@hotsos.core.plugins.kernel.net.SockStat.TCPMemUsagePct'
+  incsumerr: $[hotsos.core.plugins.kernel.net.SNMPTcp.InCsumErrors]
+  incsumrate_pcent: $[hotsos.core.plugins.kernel.net.SNMPTcp.InCsumErrorsPcentInSegs]
+  outsegs: $[hotsos.core.plugins.kernel.net.SNMPTcp.OutSegs]
+  retrans: $[hotsos.core.plugins.kernel.net.SNMPTcp.RetransSegs]
+  outretrans_pcent: $[hotsos.core.plugins.kernel.net.SNMPTcp.RetransSegsPcentOutSegs]
+  spurrtx: $[hotsos.core.plugins.kernel.net.NetStatTCP.TCPSpuriousRtxHostQueues]
+  spurrtx_pcent: $[hotsos.core.plugins.kernel.net.NetStatTCP.TCPSpuriousRtxHostQueuesPcentOutSegs]
+  prunec: $[hotsos.core.plugins.kernel.net.NetStatTCP.PruneCalled]
+  rcvcoll: $[hotsos.core.plugins.kernel.net.NetStatTCP.TCPRcvCollapsed]
+  rcvpr: $[hotsos.core.plugins.kernel.net.NetStatTCP.RcvPruned]
+  ofopr: $[hotsos.core.plugins.kernel.net.NetStatTCP.OfoPruned]
+  backlogd: $[hotsos.core.plugins.kernel.net.NetStatTCP.TCPBacklogDrop]
+  rpfilterd: $[hotsos.core.plugins.kernel.net.NetStatTCP.IPReversePathFilter]
+  ldrop: $[hotsos.core.plugins.kernel.net.NetStatTCP.ListenDrops]
+  pfmemd: $[hotsos.core.plugins.kernel.net.NetStatTCP.PFMemallocDrop]
+  minttld: $[hotsos.core.plugins.kernel.net.NetStatTCP.TCPMinTTLDrop]
+  listenovf: $[hotsos.core.plugins.kernel.net.NetStatTCP.ListenOverflows]
+  ofod: $[hotsos.core.plugins.kernel.net.NetStatTCP.OfoPruned]
+  zwind: $[hotsos.core.plugins.kernel.net.NetStatTCP.TCPZeroWindowDrop]
+  rcvqd: $[hotsos.core.plugins.kernel.net.NetStatTCP.TCPRcvQDrop]
+  rcvqd_pcent: $[hotsos.core.plugins.kernel.net.NetStatTCP.TCPRcvQDropPcentInSegs]
+  rqfulld: $[hotsos.core.plugins.kernel.net.NetStatTCP.TCPReqQFullDrop]
+  rqfullcook: $[hotsos.core.plugins.kernel.net.NetStatTCP.TCPReqQFullDoCookies]
+  memusage_pages_inuse: $[hotsos.core.plugins.kernel.net.SockStat.GlobTcpSocksTotalMemPages]
+  memusage_pages_max: $[hotsos.core.plugins.kernel.net.SockStat.SysctlTcpMemMax]
+  memusage_pct: $[hotsos.core.plugins.kernel.net.SockStat.TCPMemUsagePct]
 checks:
   incsumerr_high:
     or:

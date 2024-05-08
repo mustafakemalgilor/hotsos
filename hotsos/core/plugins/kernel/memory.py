@@ -87,14 +87,20 @@ class MemInfo(_BaseProcKeyValue):
 
     @property
     def hugetlb_to_mem_total_percentage(self):
+        if self.MemTotal == 0:
+            return 0
         return round((self.Hugetlb * 100) / self.MemTotal)
 
     @property
     def mem_avail_to_mem_total_percentage(self):
+        if self.MemTotal == 0:
+            return 0
         return round((self.MemAvailable * 100) / self.MemTotal)
 
     @property
     def hugep_used_to_hugep_total_percentage(self):
+        if self.HugePages_Total == 0:
+            return 0
         return round(100 - (self.HugePages_Free * 100) / self.HugePages_Total)
 
 

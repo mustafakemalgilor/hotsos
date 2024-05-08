@@ -1,7 +1,7 @@
 vars:
-  sequential_cutoff: '@hotsos.core.plugins.storage.bcache.BDevsInfo.sequential_cutoff'
-  cache_mode: '@hotsos.core.plugins.storage.bcache.BDevsInfo.cache_mode'
-  writeback_percent: '@hotsos.core.plugins.storage.bcache.BDevsInfo.writeback_percent'
+  sequential_cutoff: $[hotsos.core.plugins.storage.bcache.BDevsInfo.sequential_cutoff]
+  cache_mode: $[hotsos.core.plugins.storage.bcache.BDevsInfo.cache_mode]
+  writeback_percent: $[hotsos.core.plugins.storage.bcache.BDevsInfo.writeback_percent]
 checks:
   bcache_enabled:
     property: hotsos.core.plugins.storage.bcache.BcacheBase.bcache_enabled

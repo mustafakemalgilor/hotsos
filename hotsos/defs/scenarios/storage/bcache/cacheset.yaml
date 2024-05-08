@@ -1,7 +1,7 @@
 vars:
-  congested_read_threshold_us: '@hotsos.core.plugins.storage.bcache.CachesetsInfo.congested_read_threshold_us'
-  congested_write_threshold_us: '@hotsos.core.plugins.storage.bcache.CachesetsInfo.congested_write_threshold_us'
-  cache_available_percent: '@hotsos.core.plugins.storage.bcache.CachesetsInfo.cache_available_percent'
+  congested_read_threshold_us: $[hotsos.core.plugins.storage.bcache.CachesetsInfo.congested_read_threshold_us]
+  congested_write_threshold_us: $[hotsos.core.plugins.storage.bcache.CachesetsInfo.congested_write_threshold_us]
+  cache_available_percent: $[hotsos.core.plugins.storage.bcache.CachesetsInfo.cache_available_percent]
 checks:
   bcache_enabled:
     property: hotsos.core.plugins.storage.bcache.BcacheBase.bcache_enabled

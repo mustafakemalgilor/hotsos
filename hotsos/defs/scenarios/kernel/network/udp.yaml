@@ -1,15 +1,15 @@
 vars:
-  inerrors: '@hotsos.core.plugins.kernel.net.SNMPUdp.InErrors'
-  inerrors_pcent: '@hotsos.core.plugins.kernel.net.SNMPUdp.InErrorsPcentInDatagrams'
-  rcvbuferrors: '@hotsos.core.plugins.kernel.net.SNMPUdp.RcvbufErrors'
-  rcvbuferrors_pcent: '@hotsos.core.plugins.kernel.net.SNMPUdp.RcvbufErrorsPcentInDatagrams'
-  sndbuferrors: '@hotsos.core.plugins.kernel.net.SNMPUdp.SndbufErrors'
-  sndbuferrors_pcent: '@hotsos.core.plugins.kernel.net.SNMPUdp.SndbufErrorsPcentOutDatagrams'
-  incsumerrors: '@hotsos.core.plugins.kernel.net.SNMPUdp.InCsumErrors'
-  incsumerrors_pcent: '@hotsos.core.plugins.kernel.net.SNMPUdp.InCsumErrorsPcentInDatagrams'
-  memusage_pages_inuse: '@hotsos.core.plugins.kernel.net.SockStat.GlobUdpSocksTotalMemPages'
-  memusage_pages_max: '@hotsos.core.plugins.kernel.net.SockStat.SysctlUdpMemMax'
-  memusage_pct: '@hotsos.core.plugins.kernel.net.SockStat.UDPMemUsagePct'
+  inerrors: $[hotsos.core.plugins.kernel.net.SNMPUdp.InErrors]
+  inerrors_pcent: $[hotsos.core.plugins.kernel.net.SNMPUdp.InErrorsPcentInDatagrams]
+  rcvbuferrors: $[hotsos.core.plugins.kernel.net.SNMPUdp.RcvbufErrors]
+  rcvbuferrors_pcent: $[hotsos.core.plugins.kernel.net.SNMPUdp.RcvbufErrorsPcentInDatagrams]
+  sndbuferrors: $[hotsos.core.plugins.kernel.net.SNMPUdp.SndbufErrors]
+  sndbuferrors_pcent: $[hotsos.core.plugins.kernel.net.SNMPUdp.SndbufErrorsPcentOutDatagrams]
+  incsumerrors: $[hotsos.core.plugins.kernel.net.SNMPUdp.InCsumErrors]
+  incsumerrors_pcent: $[hotsos.core.plugins.kernel.net.SNMPUdp.InCsumErrorsPcentInDatagrams]
+  memusage_pages_inuse: $[hotsos.core.plugins.kernel.net.SockStat.GlobUdpSocksTotalMemPages]
+  memusage_pages_max: $[hotsos.core.plugins.kernel.net.SockStat.SysctlUdpMemMax]
+  memusage_pct: $[hotsos.core.plugins.kernel.net.SockStat.UDPMemUsagePct]
 checks:
   rcvbuferrors_high:
     or:

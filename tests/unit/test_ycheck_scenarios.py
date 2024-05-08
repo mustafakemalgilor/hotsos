@@ -452,9 +452,9 @@ vars:
   bar: "two"
   frombadprop: '@tests.unit.idontexist'  # add to ensure lazy-loaded
   fromprop: '@tests.unit.test_ycheck_scenarios.TestProperty.myattr'
-  fromfact: '@hotsos.core.host_helpers.systemd.ServiceFactory.start_time_secs:snapd'
-  fromfact2: '@hotsos.core.host_helpers.filestat.FileFactory.mtime:myfile.txt'
-  fromsysctl: '@hotsos.core.host_helpers.sysctl.SYSCtlFactory:net.core.somaxconn'
+  fromfact: $[hotsos.core.host_helpers.systemd.ServiceFactory.start_time_secs:snapd]
+  fromfact2: $[hotsos.core.host_helpers.filestat.FileFactory.mtime:myfile.txt]
+  fromsysctl: $[hotsos.core.host_helpers.sysctl.SYSCtlFactory:net.core.somaxconn]
   boolvar: false
 checks:
   aptcheck:

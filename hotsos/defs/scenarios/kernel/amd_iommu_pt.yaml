@@ -1,7 +1,7 @@
 vars:
-  virt_type: '@hotsos.core.plugins.system.SystemBase.virtualisation_type'
-  cpu_vendor: '@hotsos.core.plugins.kernel.sysfs.CPU.vendor'
-  kernel_cmd_line: '@hotsos.core.plugins.kernel.KernelBase.boot_parameters'
+  virt_type: $[hotsos.core.plugins.system.SystemBase.virtualisation_type]
+  cpu_vendor: $[hotsos.core.plugins.kernel.sysfs.CPU.vendor]
+  kernel_cmd_line: $[hotsos.core.plugins.kernel.KernelBase.boot_parameters]
 checks:
   is_phy_host:
     varops: [[$virt_type], [not_]]

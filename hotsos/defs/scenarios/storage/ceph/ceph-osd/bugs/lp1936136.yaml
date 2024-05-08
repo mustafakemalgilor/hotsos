@@ -1,5 +1,5 @@
 vars:
-  cache_available_percent: '@hotsos.core.plugins.storage.bcache.CachesetsInfo.cache_available_percent'
+  cache_available_percent: $[hotsos.core.plugins.storage.bcache.CachesetsInfo.cache_available_percent]
 checks:
   node_is_ceph_osd_and_has_version:
     # Get version of osd based on package installed. This is prone to
