@@ -23,15 +23,15 @@ vars:
   hugetlb_to_mem_total_threshold_percent: 80
   mem_available_to_mem_total_thershold_percent: 3
 checks:
-  low_free_high_order_mem_blocks:
-    varops: [[$nodes_with_limited_high_order_memory], [length_hint]]
-  high_compaction_failures:
-    - varops: [[$compact_success], [gt, $min_compaction_success]]
-    - varops: [[$compaction_failures_percent], [gt, $max_compaction_failures_pcent]]
-  too_many_free_hugepages:
-    - property: hotsos.core.plugins.kernel.memory.MemInfo.huge_pages_enabled
-    - varops: [[$hugetlb_to_mem_total_percentage], [gt, $hugetlb_to_mem_total_threshold_percent]]
-    - varops: [[$mem_avail_to_mem_total_percentage], [lt, $mem_available_to_mem_total_thershold_percent]]
+  low_free_high_order_mem_blocks: |
+    len(@hotsos.core.plugins.kernel.memory.MemoryChecks.nodes_with_limited_high_order_memory) > 0
+  high_compaction_failures: |
+    (@hotsos.core.plugins.kernel.memory.VMStat.compact_success > 10000) AND
+    (@hotsos.core.plugins.kernel.memory.VMStat.compaction_failures_percent > 10)
+  too_many_free_hugepages: |
+    (@hotsos.core.plugins.kernel.memory.MemInfo.huge_pages_enabled == True) AND
+    (@hotsos.core.plugins.kernel.memory.MemInfo.hugetlb_to_mem_total_percentage > 80) AND
+    (@hotsos.core.plugins.kernel.memory.MemInfo.mem_avail_to_mem_total_percentage < 3)
 conclusions:
   low_free_high_order_mem_blocks:
     decision: low_free_high_order_mem_blocks
